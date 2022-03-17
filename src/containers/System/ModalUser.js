@@ -88,6 +88,13 @@ class ModalUser extends Component {
                 }}
                 value={this.state.address}
               />
+              <input
+                type="text"
+                onChange={(e) => {
+                  this.handleOnChangeInput(e, "address");
+                }}
+                value={this.state.address}
+              />
             </div>
           </div>
         </ModalBody>
