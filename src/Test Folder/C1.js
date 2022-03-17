@@ -10,8 +10,15 @@ const C1 = () => {
 		setA(A.data.users)
 	} 
   useEffect(() => {F()}, []);
+  const newUser = () => {alert('KakA')} 
   return (
     <div>
+      <div lassName="mx-1">
+          <button 
+            className="btn btn-primary px-3 mx-2"
+            onClick = {() => {newUser()} }
+          >Add new user</button>
+        </div>
       <table id="customers" className="mt-3 mx-2 ">
         <tr>
           <th>email</th>
@@ -25,6 +32,8 @@ const C1 = () => {
               <td>{a.firstName}</td>
               <td>
                 <button>Add</button>
+                <button>Delete</button>
+
               </td>
             </tr>
           );

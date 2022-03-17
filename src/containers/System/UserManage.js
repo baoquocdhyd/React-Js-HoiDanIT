@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import "./UserManage.scss";
 import { getAllUsers } from "../../services/userService.js";
 import moment from "moment";
-// import moment from "moment-timezone";
+import ModalUser from "./ModalUser.js";
+
 class UserManage extends Component {
   constructor(props) {
     super(props);
-    this.state = { arrUsers: [] };
+    this.state = { arrUsers: [], isOpenModalUser: false };
   }
 
   async componentDidMount() {
@@ -19,12 +20,29 @@ class UserManage extends Component {
     }
     // console.log(response)
   }
-
+  handleAddNewUser = () => {
+    // alert("OKOK");
+    this.setState({ isOpenModalUser: true });
+  };
+  toggleUserModal = () => {this.setState({isOpenModalUser: !this.state.isOpenModalUser} )}
   render() {
-    console.log("kiểm tra render", this.state.arrUsers);
+    // console.log("kiểm tra render", this.state.arrUsers);
     return (
-      <div className="user-container">
+      <div className="user-container" >
+        <ModalUser isOpen= {this.state.isOpenModalUser}
+        toggleFromParent = {this.toggleUserModal}
+        />
         <div className="title text-center">Xin chào!</div>
+        <div lassName="mx-1">
+          <button
+            className="btn btn-primary px-3 mx-2"
+            onClick={() => {
+              this.handleAddNewUser();
+            }}
+          >
+            Add new user
+          </button>
+        </div>
         <div className="user-table">
           <table id="customers" className="mt-3 mx-2 ">
             <tr>
